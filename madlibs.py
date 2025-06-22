@@ -1,0 +1,6 @@
+name = input("what is your name?")
+place = input('give me a place.')
+verb = input('what are you doing?')
+object = input('give me an object')
+adjective = input('give me an adjective for the object')
+print("Once upon a time there was someone named" ,name, "and this person was" ,verb, "in" ,place, "with a" ,adjective ,object)
