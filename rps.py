@@ -9,27 +9,27 @@ while(runAgain):
 
     if computer ==1:
         if user =="r":
-            print("its a tie")    
+            print("the computer chose rock, its a tie")    
         elif user=="p":
-            print("you win")
+            print("the computer chose rock, you win")
         elif user =="s":
-            print ("you lose")
+            print ("the computer chose rock, you lose")
 
     elif computer ==2:
         if user == "p":
-            print("its a tie")
+            print("the computer chose paper, its a tie")
         elif user == "r":
-            print("you lose")
+            print("the computer chose paper, you lose")
         elif user == "s":
-            print("you win")
+            print("the computer chose paper, you win")
 
     elif computer == 3:
         if user == "s":
-            print("its a tie")
+            print("the computer chose scissors, its a tie")
         elif user=="p":
-            print("you lose")
+            print("the computer chose scissors, you lose")
         elif user == "r":
-            print("you win")
+            print("the computer chose scissors, you win")
 
     answer = input("do you want to play again? y/n")
     if answer == "n":
