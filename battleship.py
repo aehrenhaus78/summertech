@@ -43,10 +43,11 @@ def ValidatePlacement(board, x, y, direction, shiplength):
         
 
 def MakeMove(master, view, x, y):
+
     if master[x][y] == "[0]":
-        view[x][y] = "[X]"#hit
+        view[x][y] = "[H]"#hit
     else:
-        view[x][y] = "[Y]" #miss
+        view[x][y] = "[M]" #miss
 
 
 def PlaceShip(board, x, y, direction, shiplength):
@@ -93,9 +94,10 @@ def CheckWinner(board):
     for i in range(10):
         for j in range(10):
             if board[i][j] == "[0]":
-                return False
-    return True
-
+                count=count+1
+    if count==17:
+        return True
+ 
 
 
 
@@ -132,10 +134,11 @@ for shipSize in shipSizes:
         direction=input("choose a direction:left, right, up, down ")
         if ValidatePlacement(playerBoard, row, col, direction, shipSize):
             PlaceShip(playerBoard, row, col, direction, shipSize)
+            PrintBoard(playerBoard)
             placingShips=False
 
 for shipSize in shipSizes:
-    placingShips=True
+    # placingShips=True (i fixed it)
     while(placingShips==True):
         row=randrange(10)
         col=randrange(10)
@@ -145,15 +148,14 @@ for shipSize in shipSizes:
 
         if ValidatePlacement(computerBoard, row, col, direction, shipSize): 
             PlaceShip(computerBoard, row, col, direction, shipSize)
-
+playing = True
 while(playing == True):
-    PrintBoard(playerBoard)
-
+    # PrintBoard(playerBoard)
     PrintBoard(guessingBoard)
     print("your turn")
     playerTurn=True
     while(playerTurn==True):
-        col=(input("Select the column for your ship [A-J] "))
+        col=input("Select a column to guess [A-J] ")
         if col in "abcdefghijklmnopqrstuvwxyzKLMNOPQRSTUVWXYZ":
             print("invalid option")
             continue
@@ -167,9 +169,12 @@ while(playing == True):
         playing=False
         print("YOU WIN!!!")
         break
- 
+#  make ship sink noticable "[~~x~~]
     computerTurn=True
     while(computerTurn==True):
+        PrintBoard(playerBoard)
+       #find way tos ave previous computerguess(so it knows to go next to it if it is a hit)
+        # else:
         row = randrange(10)
         col = randrange(10)
         if ValidateXY(playerBoard, row, col) == True:
@@ -180,3 +185,5 @@ while(playing == True):
         playing=False
         print("you lose")
         break
+
+    
